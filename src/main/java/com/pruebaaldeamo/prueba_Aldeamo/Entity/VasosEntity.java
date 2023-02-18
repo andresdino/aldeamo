@@ -19,5 +19,6 @@ public class VasosEntity {
 
     @Column(name = "input_array")
     private String input;
+
 }
 
