@@ -22,27 +22,29 @@ public class VasoServiceImpl implements VasosService {
         var input = this.vasoRepository.findById(idPila).orElseThrow(
                 () -> new RuntimeException("No se encontro informacion con el ID: " + idPila));
         var A = input.getInput().split(",");
+   try{
+       for (int f = 0; f <= interacion; f++) {
+           var data = Pi.get(f);
+           for (int x = (A.length) - 1; x >= 0; x--) {
+               var item = Integer.parseInt(A[x]);
+               var isdivisible = this.isDivisible(data, item);
+               if (isdivisible) {
+                   b.add(item);
+               } else {
+                   ai.add(item);
+               }
+           }
+           A = this.listaToStringArray(ai);
+           ai.clear();
+       }
 
-        for (int f = 0; f <= interacion; f++) {
-            var data = Pi.get(f);
-            for (int x = (A.length) - 1; x >= 0; x--) {
-                var item = Integer.parseInt(A[x]);
-                var isdivisible = this.isDivisible(data, item);
-                if (isdivisible) {
-                    b.add(item);
-                } else {
-                    ai.add(item);
-                }
-            }
-            A = this.ListaToStringArray(ai);
-            ai.clear();
-        }
-
-
-        return b;
+   }catch (Exception ex){
+       return b;
+   }
+       return b;
     }
 
-    private String[] ListaToStringArray(List<Integer> datos) {
+    private String[] listaToStringArray(List<Integer> datos) {
         String[] strArr = new String[datos.size()];
         for (int i = 0; i < datos.size(); i++) {
             strArr[i] = String.valueOf(datos.get(i));

@@ -20,6 +20,13 @@ public class VasosController {
         this.vasoService = vasoService;
     }
 
+
+    /**
+     * Petición Get que recibe como parametro q:'numero de iteraciones'  idPila:'identificados fuente de datos'
+     * @param q
+     * @param idPila
+     * @return
+     */
     @GetMapping(value = "/{q}/{idPila}")
     public ResponseEntity<?> getFedCafeteros(@PathVariable int q, @PathVariable Long idPila) {
         var service = this.vasoService.generarVaso(q, idPila);
